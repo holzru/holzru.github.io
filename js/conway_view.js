@@ -9,6 +9,7 @@ const View = function ($el) {
   this.$stopButton = $("#stop-button");
   this.$clearButton = $("#clear-button");
   this.$conwayOptions = $('#conway-options');
+  this.$randomizeButton = $('#randomize-button');
   this.board = new Board(50);
   this.setupGrid();
 
@@ -18,10 +19,27 @@ const View = function ($el) {
   this.$speedBar.on('input', this.adjustSpeed.bind(this));
   this.$clearButton.click(this.clear.bind(this));
   this.$conwayOptions.on('change', this.gridSet.bind(this));
+  this.$randomizeButton.click(this.randomize.bind(this));
 };
 
 View.prototype.gridSet = function () {
   this.customGrid($('#conway-options :selected').text());
+};
+
+View.prototype.randomize = function () {
+  for (let i = 0; i < this.board.grid.length; i++) {
+    let gen = 0;
+    for (let j = 0; j < this.board.grid.length; j++) {
+      if (gen % 3 === 0 || gen % 5 === 0) {
+        this.board.grid[i][j] = 0;
+      } else {
+        this.board.grid[i][j] = parseInt(Math.random() * 10);
+      }
+      gen++;
+    }
+  }
+  this.board.colorGenerations();
+  this.start();
 };
 
 View.prototype.customGrid = function (type) {
@@ -89,7 +107,7 @@ View.prototype.handleClick = function (event) {
   let cell = $(event.currentTarget)[0];
   let pos = cell.id.split("and").map((x) => { return parseInt(x);});
   if (this.board.grid[pos[0]][pos[1]] === 0) {
-    this.board.grid[pos[0]][pos[1]] = 10;
+    this.board.grid[pos[0]][pos[1]] = 11;
   } else {
     this.board.grid[pos[0]][pos[1]] = 0;
     console.log('click');
@@ -144,7 +162,6 @@ View.prototype.step = function () {
   } else {
     this.stop();
     this.clear();
-    alert ('evolution over');
     clearInterval(this.intervalId);
   }
 };

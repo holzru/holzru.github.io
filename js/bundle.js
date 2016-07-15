@@ -69,6 +69,7 @@
 	  this.$stopButton = $("#stop-button");
 	  this.$clearButton = $("#clear-button");
 	  this.$conwayOptions = $('#conway-options');
+	  this.$randomizeButton = $('#randomize-button');
 	  this.board = new Board(50);
 	  this.setupGrid();
 	
@@ -78,10 +79,27 @@
 	  this.$speedBar.on('input', this.adjustSpeed.bind(this));
 	  this.$clearButton.click(this.clear.bind(this));
 	  this.$conwayOptions.on('change', this.gridSet.bind(this));
+	  this.$randomizeButton.click(this.randomize.bind(this));
 	};
 	
 	View.prototype.gridSet = function () {
 	  this.customGrid($('#conway-options :selected').text());
+	};
+	
+	View.prototype.randomize = function () {
+	  for (let i = 0; i < this.board.grid.length; i++) {
+	    let gen = 0;
+	    for (let j = 0; j < this.board.grid.length; j++) {
+	      if (gen % 3 === 0 || gen % 5 === 0) {
+	        this.board.grid[i][j] = 0;
+	      } else {
+	        this.board.grid[i][j] = parseInt(Math.random() * 10);
+	      }
+	      gen++;
+	    }
+	  }
+	  this.board.colorGenerations();
+	  this.start();
 	};
 	
 	View.prototype.customGrid = function (type) {
@@ -149,7 +167,7 @@
 	  let cell = $(event.currentTarget)[0];
 	  let pos = cell.id.split("and").map((x) => { return parseInt(x);});
 	  if (this.board.grid[pos[0]][pos[1]] === 0) {
-	    this.board.grid[pos[0]][pos[1]] = 10;
+	    this.board.grid[pos[0]][pos[1]] = 11;
 	  } else {
 	    this.board.grid[pos[0]][pos[1]] = 0;
 	    console.log('click');
@@ -204,7 +222,6 @@
 	  } else {
 	    this.stop();
 	    this.clear();
-	    alert ('evolution over');
 	    clearInterval(this.intervalId);
 	  }
 	};
@@ -227,7 +244,7 @@
 	  for (let i = 0; i < dim; i++) {
 	    const row = [];
 	    for (let j = 0; j < dim; j++) {
-	      row.push(10);
+	      row.push(12);
 	    }
 	    grid.push(row);
 	  }
@@ -273,7 +290,7 @@
 	  let condition = true;
 	  this.grid.forEach((row) => {
 	    row.forEach((term) => {
-	      if (term < 7 ) {
+	      if (term < 11 ) {
 	        condition = false;
 	      }
 	    });
@@ -296,7 +313,7 @@
 	        toAge.push(pos);
 	      }
 	    } else {
-	      if (this.grid[pos[0]][pos[1]] < 8) {
+	      if (this.grid[pos[0]][pos[1]] < 11) {
 	        toAge.push(pos);
 	      }
 	    }
@@ -316,25 +333,31 @@
 	    let pos = cell.id.split("and").map((x) => { return parseInt(x);});
 	    switch (this.grid[pos[0]][pos[1]]) {
 	      case 0:
-	        $(cell).css("background-color", "red");
+	        $(cell).css("background-color", "#C33C54");
 	        break;
 	      case 1:
-	        $(cell).css("background-color", "orange");
+	        $(cell).css("background-color", "#254E70");
 	        break;
 	      case 2:
-	        $(cell).css("background-color", "yellow");
+	        $(cell).css("background-color", "#37718E");
 	        break;
 	      case 3:
-	        $(cell).css("background-color", "green");
+	        $(cell).css("background-color", "#8EE3EF");
 	        break;
 	      case 4:
-	        $(cell).css("background-color", "blue");
+	        $(cell).css("background-color", "#AEF3E7");
 	        break;
 	      case 5:
-	        $(cell).css("background-color", "purple");
+	        $(cell).css("background-color", "#D9F2B4");
 	        break;
 	      case 6:
-	        $(cell).css("background-color", "pink");
+	        $(cell).css("background-color", "#FFB7C3");
+	        break;
+	      case 7:
+	        $(cell).css("background-color", "#BCF4F5");
+	        break;
+	      case 8:
+	        $(cell).css("background-color", "#A9B2AC");
 	        break;
 	      default:
 	        $(cell).css("background-color", "lightgrey");

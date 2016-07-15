@@ -9,7 +9,7 @@ Board.blankGrid = function (dim) {
   for (let i = 0; i < dim; i++) {
     const row = [];
     for (let j = 0; j < dim; j++) {
-      row.push(10);
+      row.push(12);
     }
     grid.push(row);
   }
@@ -55,7 +55,7 @@ Board.prototype.over = function () {
   let condition = true;
   this.grid.forEach((row) => {
     row.forEach((term) => {
-      if (term < 7 ) {
+      if (term < 11 ) {
         condition = false;
       }
     });
@@ -78,7 +78,7 @@ Board.prototype.neighbors = function () {
         toAge.push(pos);
       }
     } else {
-      if (this.grid[pos[0]][pos[1]] < 8) {
+      if (this.grid[pos[0]][pos[1]] < 11) {
         toAge.push(pos);
       }
     }
@@ -98,25 +98,31 @@ Board.prototype.colorGenerations = function () {
     let pos = cell.id.split("and").map((x) => { return parseInt(x);});
     switch (this.grid[pos[0]][pos[1]]) {
       case 0:
-        $(cell).css("background-color", "red");
+        $(cell).css("background-color", "#C33C54");
         break;
       case 1:
-        $(cell).css("background-color", "orange");
+        $(cell).css("background-color", "#254E70");
         break;
       case 2:
-        $(cell).css("background-color", "yellow");
+        $(cell).css("background-color", "#37718E");
         break;
       case 3:
-        $(cell).css("background-color", "green");
+        $(cell).css("background-color", "#8EE3EF");
         break;
       case 4:
-        $(cell).css("background-color", "blue");
+        $(cell).css("background-color", "#AEF3E7");
         break;
       case 5:
-        $(cell).css("background-color", "purple");
+        $(cell).css("background-color", "#D9F2B4");
         break;
       case 6:
-        $(cell).css("background-color", "pink");
+        $(cell).css("background-color", "#FFB7C3");
+        break;
+      case 7:
+        $(cell).css("background-color", "#BCF4F5");
+        break;
+      case 8:
+        $(cell).css("background-color", "#A9B2AC");
         break;
       default:
         $(cell).css("background-color", "lightgrey");

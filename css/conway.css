@@ -27,6 +27,7 @@ figure {
 }
 
 ul {
+  min-width: 680px;
 }
 
 ul:after {

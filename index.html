@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Conway's Game of Life</title>
+    <link rel="stylesheet" type="text/css" href="./css/conway.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="./js/bundle.js"></script>
+  </head>
+
+  <body>
+    <h1>Conway's Game of Life</h1>
+    <div class="adjusters">
+      <button id="start-button">Start</button>
+      <button id="stop-button">Stop</button>
+      <button id="clear-button">Clear Grid</button>
+      <label for="speed-bar">Speed Bar: </label><input type="range" class="slider" id="speed-bar" min="50" max="1000" value="100"/>
+        <div class="speed-status">
+          Update Interval (ms): <span class="speed" value="100">100</span>
+      </div>
+      <select id="conway-options" class="preset-dropdown" >
+        <option value="blank" selected>Blank Grid</option>
+        <option value="pulsar">Pulsar</option>
+        <!-- <option value="gosper-gun" selected>Gosper Glider Gun</option>
+        <option value="b52-gun">B25 Glider Gun</option>
+        <option value="acorn">Acorn</option>
+        <option value="garden-of-eden">Garden of Eden</option>
+        <option value="garden-of-eden2">Garden of Eden II</option>
+        <option value="weekender">Weekender</option>
+        <option value="dragon">Dragon</option>
+        <option value="seal">Seal</option>
+        <option value="beehive-hassler">Beehive Hassler</option>
+        <option value="toad-hassler">Toad Hassler</option>
+        <option value="switch-engine">Switch Engine</option>
+        <option value="chicken-wire">Chicken Wire</option>
+        <option value="noahs-ark">Noah's Ark</option> -->
+      </select>
+    </div>
+
+    <figure class="conway"></figure>
+
+  </body>
+</html>

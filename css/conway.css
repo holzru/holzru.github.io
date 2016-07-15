@@ -16,18 +16,76 @@ body {
   font-weight: bold;
 }
 
+.conway-container {
+  position: relative;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+}
+
+.colors {
+  max-width: 200px;
+}
+
+.color-box-title {
+  max-width: 20%;
+  padding: 5px;
+  font-size: 12px;
+
+}
+
+.color-palete {
+  display: flex;
+  flex-flow: column;
+}
+
+.color-box {
+  padding: 3px;
+  height: 20px;
+  width: 20px;
+  margin: 0 auto;
+}
+
+.conway-rules {
+  display: flex;
+  flex-flow: column;
+  padding-bottom: 10px;
+}
+
+.conway-rule {
+  padding: 2px;
+  font-size: 14px;
+}
+
+.adjusters {
+  max-width: 20%;
+  position: relative;
+  display: flex;
+  flex-flow: column;
+}
+
+button {
+  padding: 5px;
+  margin: 10px;
+}
+
+
+.speed-status {
+  margin: 10px;
+}
+
 h1 {
-  font-size: 60px;
-  margin: 30px;
+  font-size: 40px;
+  margin: 10px;
 }
 
 figure {
   display: inline-block;
-  border: 5px solid black;
+  border: 0.5px solid lightgrey;
 }
 
 ul {
-  min-width: 680px;
+  min-width: 650px;
 }
 
 ul:after {
@@ -37,8 +95,9 @@ ul:after {
 }
 
 li {
+  background-color: lightgrey;
   float: left;
-  border: 1px solid black;
-  width: 15px;
-  height: 15px;
+  border: 0.5px solid white;
+  width: 11px;
+  height: 11px;
 }

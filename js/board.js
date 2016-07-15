@@ -119,7 +119,7 @@ Board.prototype.colorGenerations = function () {
         $(cell).css("background-color", "pink");
         break;
       default:
-        $(cell).css("background-color", "white");
+        $(cell).css("background-color", "lightgrey");
         break;
     }
   });

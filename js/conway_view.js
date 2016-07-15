@@ -9,7 +9,7 @@ const View = function ($el) {
   this.$stopButton = $("#stop-button");
   this.$clearButton = $("#clear-button");
   this.$conwayOptions = $('#conway-options');
-  this.board = new Board(40);
+  this.board = new Board(50);
   this.setupGrid();
 
   $(".cell").click(this.handleClick.bind(this));
@@ -55,7 +55,22 @@ View.presetBoards = function (input) {
     case "Explosion":
       return ([[17, 19], [17, 20], [18, 18], [18, 20], [19, 18], [19, 20], [20, 19]]);
     case "Blinker":
-      return;
+      return ([[17, 19], [17, 20], [18, 19], [19, 22], [20, 21], [20, 22]]);
+    case "Acorn":
+      return ([[17, 19], [18, 21], [19, 18], [19, 19], [19, 22], [19, 23], [19, 24]]);
+    case "Spaceship":
+      return ([[7, 37], [7, 38], [8, 36], [8, 37], [8, 38], [8, 39],
+              [9, 35], [9, 36], [9, 38], [9, 39], [10, 36], [10, 37]]);
+    case "Braced Pentadecathlon":
+      return ([[9, 14], [9, 24], [10, 14], [10, 15], [10, 16], [10, 22], [10, 23],
+        [10, 24], [11, 17], [11, 21], [12, 16], [12, 17], [12, 21], [12, 22],
+        [14, 19], [15, 19], [16, 20], [16, 18], [17, 19], [18, 19], [19, 19],
+        [20, 19], [21, 18], [21, 20], [22, 19], [23, 19], [25, 17], [25, 16],
+        [25, 21], [25, 22], [26, 17], [26, 21], [27, 14], [27, 15], [27, 16],
+        [27, 22], [27, 23], [27, 24], [28, 14], [28, 24]]);
+    case "Pentadecathlon":
+      return ([[14, 19], [15, 19], [16, 20], [16, 18], [17, 19], [18, 19], [19, 19],
+       [20, 19], [21, 18], [21, 20], [22, 19], [23, 19]]);
     default:
       return [];
     }
@@ -117,7 +132,7 @@ View.prototype.stop = function () {
 };
 
 View.prototype.clear = function () {
-  this.board = new Board(40);
+  this.board = new Board(50);
   this.board.colorGenerations();
 };
 
@@ -127,6 +142,8 @@ View.prototype.step = function () {
     this.board.neighbors();
     this.board.colorGenerations();
   } else {
+    this.stop();
+    this.clear();
     alert ('evolution over');
     clearInterval(this.intervalId);
   }

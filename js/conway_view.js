@@ -10,6 +10,8 @@ const View = function ($el) {
   this.$clearButton = $("#clear-button");
   this.$conwayOptions = $('#conway-options');
   this.$randomizeButton = $('#randomize-button');
+  this.Xdim = 50;
+  this.Ydim = 40;
   this.board = new Board(50);
   this.setupGrid();
 
@@ -27,10 +29,10 @@ View.prototype.gridSet = function () {
 };
 
 View.prototype.randomize = function () {
-  for (let i = 0; i < this.board.grid.length; i++) {
+  for (let i = 0; i < this.Ydim; i++) {
     let gen = 0;
-    for (let j = 0; j < this.board.grid.length; j++) {
-      if (gen % 3 === 0 || gen % 5 === 0) {
+    for (let j = 0; j < this.Xdim; j++) {
+      if (gen % 2 === 0 || gen % 6 === 0) {
         this.board.grid[i][j] = 0;
       } else {
         this.board.grid[i][j] = parseInt(Math.random() * 10);
@@ -72,10 +74,28 @@ View.presetBoards = function (input) {
               [19, 14]]);
     case "Explosion":
       return ([[17, 19], [17, 20], [18, 18], [18, 20], [19, 18], [19, 20], [20, 19]]);
-    case "Blinker":
+    case "Fireworks!":
+      return ([[17, 19], [17, 20], [18, 18], [18, 20], [19, 18], [19, 20], [20, 19],
+              [10, 12], [10, 13], [11, 11], [11, 13], [12, 11], [12, 13], [13, 12],
+              [15, 32], [15, 33], [16, 31], [16, 33], [17, 31], [17, 33], [18, 32],
+              [24, 26], [24, 27], [25, 25], [25, 27], [26, 25], [26, 27], [27, 26],
+              [24, 6], [24, 7], [25, 5], [25, 7], [26, 5], [26, 7], [27, 6],
+              [3, 9], [3, 10], [4, 8], [4, 10], [5, 8], [5, 10], [6, 9],
+              [7, 29], [7, 30], [8, 28], [8, 30], [9, 28], [9, 30], [10, 29],
+              [31, 33], [31, 34], [32, 32], [32, 34], [33, 32], [33, 34], [34, 33],
+              [31, 13], [31, 14], [32, 12], [32, 14], [33, 12], [33, 14], [34, 13]]);
+    case "Beacon":
       return ([[17, 19], [17, 20], [18, 19], [19, 22], [20, 21], [20, 22]]);
     case "Acorn":
       return ([[17, 19], [18, 21], [19, 18], [19, 19], [19, 22], [19, 23], [19, 24]]);
+    case "Acorn Bonanza!":
+      return ([[17, 19], [18, 21], [19, 18], [19, 19], [19, 22], [19, 23], [19, 24],
+              [7, 9], [8, 11], [9, 8], [9, 9], [9, 12], [9, 13], [9, 14],
+              [7, 29], [8, 31], [9, 28], [9, 29], [9, 32], [9, 33], [9, 34],
+              [27, 29], [28, 31], [29, 28], [29, 29], [29, 32], [29, 33], [29, 34],
+              [27, 9], [28, 11], [29, 8], [29, 9], [29, 12], [29, 13], [29, 14],
+              // [12, 14], [13, 16], [14, 13], [14, 14], [14, 17], [14, 18], [14, 19],
+              [17, 39], [18, 41], [19, 38], [19, 39], [19, 42], [19, 43], [19, 44]]);
     case "Spaceship":
       return ([[7, 37], [7, 38], [8, 36], [8, 37], [8, 38], [8, 39],
               [9, 35], [9, 36], [9, 38], [9, 39], [10, 36], [10, 37]]);
@@ -127,9 +147,9 @@ Array.prototype.actIncludes = function(arr1) {
 
 View.prototype.setupGrid = function () {
   let html = "";
-  for (let i = 0; i < this.board.dim; i++) {
+  for (let i = 0; i < this.Ydim; i++) {
     html += "<ul>";
-    for (let j = 0; j < this.board.dim; j++) {
+    for (let j = 0; j < this.Xdim; j++) {
       html += `<li class="cell" id='${i}and${j}'></li>`;
     }
     html += "</ul>";

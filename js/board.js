@@ -1,12 +1,13 @@
 const Board = function (dim) {
-  this.dim = dim;
-  this.grid = Board.blankGrid(this.dim);
+  this.Xdim = dim;
+  this.Ydim = dim-10;
+  this.grid = Board.blankGrid(this.Xdim);
   this.begun = false;
 };
 
 Board.blankGrid = function (dim) {
   const grid = [];
-  for (let i = 0; i < dim; i++) {
+  for (let i = 0; i < dim-10; i++) {
     const row = [];
     for (let j = 0; j < dim; j++) {
       row.push(12);
@@ -39,13 +40,13 @@ Board.prototype.findNeighborCount = function (coord) {
 };
 
 Board.prototype.inBounds = function(coord) {
-  let condition = true;
-  coord.forEach((point) => {
-    if (point >= this.dim || point < 0) {
-      condition = false;
-    }
-  });
-  return condition;
+  if (coord[0] < 0 || coord[0] >= this.Ydim) {
+    return false;
+  } else if (coord[1] < 0 || coord[1] >= this.Xdim) {
+    return false;
+  } else {
+    return true;
+  }
 };
 
 Board.prototype.over = function () {

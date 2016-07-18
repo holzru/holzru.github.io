@@ -16,6 +16,11 @@ body {
   font-weight: bold;
 }
 
+.conway {
+  min-width: 650px;
+}
+
+
 .conway-container {
   position: relative;
   display: flex;
@@ -24,19 +29,43 @@ body {
 }
 
 .colors {
-  max-width: 200px;
+  max-width: 300px;
 }
 
 .color-box-title {
-  max-width: 20%;
+  max-width: 100%;
   padding: 5px;
   font-size: 12px;
-
 }
 
 .color-palete {
   display: flex;
+  flex-flow: row;
+  min-width: 155px;
+  background-color: #f9f9f9;
+  border-top-right-radius: 10px;
+}
+
+.adjusters {
+  max-width: 20%;
+  position: relative;
+  display: flex;
   flex-flow: column;
+  background-color: #f9f9f9;
+  border-top-left-radius: 10px;
+}
+
+li {
+  background-color: lightgrey;
+  float: left;
+  border: 0.5px solid white;
+  width: 11px;
+  height: 11px;
+}
+
+figure {
+  display: inline-block;
+  border: 0.5px solid lightgrey;
 }
 
 .color-box {
@@ -52,16 +81,18 @@ body {
   padding-bottom: 10px;
 }
 
+#conway-options-title {
+  padding-top: 15px;
+}
+
+#conway-options {
+  padding: 10px;
+  margin: 10px;
+}
+
 .conway-rule {
   padding: 2px;
   font-size: 14px;
-}
-
-.adjusters {
-  max-width: 20%;
-  position: relative;
-  display: flex;
-  flex-flow: column;
 }
 
 button {
@@ -75,29 +106,12 @@ button {
 }
 
 h1 {
-  font-size: 40px;
+  font-size: 30px;
   margin: 10px;
-}
-
-figure {
-  display: inline-block;
-  border: 0.5px solid lightgrey;
-}
-
-ul {
-  min-width: 650px;
 }
 
 ul:after {
   content: "";
   clear: both;
   display: block;
-}
-
-li {
-  background-color: lightgrey;
-  float: left;
-  border: 0.5px solid white;
-  width: 11px;
-  height: 11px;
 }

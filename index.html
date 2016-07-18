@@ -16,27 +16,29 @@
       <span class="conway-rule">Any live cell with more than 3 live neighbors dies, as if by overcrowding.</span>
       <span class="conway-rule">Any live cell with 2 or 3 live neighbors lives on to the next generation.</span>
       <span class="conway-rule">Any dead cell with exactly 3 live neighbors becomes a live cell.</span>
-      <span class="conway-rule">Click on specific cells to seed a generation, or use one of the Preset Boards.</span>
+      <span class="conway-rule">Click on specific cells to seed a generation, use one of the Preset Boards, or hit Randomize and see the chaos unfold!</span>
 
     </ul>
     <div class="conway-container">
       <div class="adjusters">
-        <label for="conway-options">Preset Boards: </label>
+        <label id="conway-options-title" for="conway-options">Preset Boards: </label>
         <select id="conway-options" class="preset-dropdown" >
           <option value="blank" selected>Blank Grid</option>
-          <option value="pulsar">Pulsar</option>
           <option value="GilderGun">Glider Gun</option>
           <option value="explosion">Explosion</option>
-          <option value="blinker">Blinker</option>
-          <option value="Pentadecathlon">Pentadecathlon</option>
-          <option value="Spaceship">Spaceship</option>
-          <option value="Braced Pentadecathlon">Braced Pentadecathlon</option>
+          <option value="fireworks">Fireworks!</option>
           <option value="Acorn">Acorn</option>
+          <option value="AcornBonaza">Acorn Bonanza!</option>
+          <option value="Pentadecathlon">Pentadecathlon</option>
+          <option value="Braced Pentadecathlon">Braced Pentadecathlon</option>
+          <option value="Spaceship">Spaceship</option>
+          <option value="pulsar">Pulsar</option>
+          <option value="beacon">Beacon</option>
         </select>
         <button id="start-button">Start</button><br/>
         <button id="stop-button">Stop</button><br/>
-        <button id="clear-button">Clear Grid</button><br/><br/>
-        <button id="randomize-button">Randomize</button><br/><br/>
+        <button id="clear-button">Clear Grid</button><br/>
+        <button id="randomize-button">Randomize!</button><br/><br/>
         <label for="speed-bar">Speed Bar: </label><input type="range" class="slider" id="speed-bar" min="100" max="1000" value="100"/>
         <div class="speed-status">
           Update Interval (ms): <span class="speed" value="100">100</span>
@@ -46,18 +48,16 @@
       <figure class="conway"></figure>
       <div class='color-palete'>
         <ul class="colors">
-          <div class="color-box-title">Live Cells: <div class="color-box" style="background-color: red"></div></div>
-          <div class="color-box-title">Died a Generation Ago: <div class="color-box" style="background-color: #C33C54"></div></div>
-          <div class="color-box-title">Died 2 Generations Ago: <div class="color-box" style="background-color: #254E70"></div></div>
-          <div class="color-box-title">Died 3 Generations Ago: <div class="color-box" style="background-color: #37718E"></div></div>
-          <div class="color-box-title">Died 4 Generations Ago: <div class="color-box" style="background-color: #8EE3EF"></div></div>
-          <div class="color-box-title">Died 5 Generations Ago: <div class="color-box" style="background-color: #AEF3E7"></div></div>
-          <div class="color-box-title">Died 6 Generations Ago: <div class="color-box" style="background-color: #D9F2B4"></div></div>
-          <div class="color-box-title">Died 7 Generations Ago: <div class="color-box" style="background-color: #FFB7C3"></div></div>
-          <div class="color-box-title">Died 8 Generations Ago: <div class="color-box" style="background-color: #BCF4F5"></div></div>
-          <div class="color-box-title">Died 9 Generations Ago: <div class="color-box" style="background-color: #A9B2AC"></div></div>
-          <div class="color-box-title">Died 10+ Generations Ago: <div class="color-box" style="background-color: lightgrey"></div></div>
-        </ul>
+          <div class="color-box-title">Live Cells: <div class="color-box" style="background-color: #C33C54"></div></div>
+          <div class="color-box-title">Died a Generation Ago: <div class="color-box" style="background-color: #254E70"></div></div>
+          <div class="color-box-title">Died 2 Generations Ago: <div class="color-box" style="background-color: #37718E"></div></div>
+          <div class="color-box-title">Died 3 Generations Ago: <div class="color-box" style="background-color: #8EE3EF"></div></div>
+          <div class="color-box-title">Died 4 Generations Ago: <div class="color-box" style="background-color: #AEF3E7"></div></div>
+          <div class="color-box-title">Died 5 Generations Ago: <div class="color-box" style="background-color: #D9F2B4"></div></div>
+          <div class="color-box-title">Died 6 Generations Ago: <div class="color-box" style="background-color: #FFB7C3"></div></div>
+          <div class="color-box-title">Died 7 Generations Ago: <div class="color-box" style="background-color: #BCF4F5"></div></div>
+          <div class="color-box-title">Died 8 Generations Ago: <div class="color-box" style="background-color: #A9B2AC"></div></div>
+
       </div>
     </div>
   </body>
